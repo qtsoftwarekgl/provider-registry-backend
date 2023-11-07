@@ -1,0 +1,16 @@
+version: "3.3"
+
+services:
+  provider-registry-backend:
+    image: registry.gitlab.com/rbc5/provider-registry-backend:uat
+    restart: on-failure
+    ports:
+      - '9091:9095'
+    environment:
+      SPRING_APPLICATION_JSON: '{
+        "spring.data.mongodb.uri"  : "mongodb://uFOoWyjF:7b8eRUz78v6W4RGf@10.100.100.25:29017/?authSource=admin&readPreference=primary&directConnection=true&ssl=false"
+      }'
+    volumes:
+      - .m2:/root/.m2
+    stdin_open: true
+    tty: true
